@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-let people = [];
+let people = [
+    { id: 1, name: 'John Doe' },
+    { id: 2, name: 'Jane Smith' }
+];
 let nextId = 1;
 
 router.get('/', (req, res) => res.json(people));

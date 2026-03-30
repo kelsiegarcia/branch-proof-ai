@@ -1,2 +1,7 @@
 <h2>People</h2>
-<p>Manage people here.</p>
+
+<ul>
+  @for (person of people; track person.id) {
+  <li>{{ person.name }}</li>
+  }
+</ul>
