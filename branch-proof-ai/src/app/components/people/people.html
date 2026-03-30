@@ -1,7 +1,13 @@
 <h2>People</h2>
 
+<input [(ngModel)]="newPersonName" name="newPersonName" placeholder="Enter name" />
+<button type="button" (click)="addPerson()">Add Person</button>
+
+<p>Total people: {{ people.length }}</p>
+
 <ul>
-  @for (person of people; track person.id) {
-  <li>{{ person.name }}</li>
-  }
+  <li *ngFor="let person of people">
+    {{ person.name }}
+    <button type="button" (click)="deletePerson(person.id)">Delete</button>
+  </li>
 </ul>

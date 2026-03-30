@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 let people = [
-    { id: 1, name: 'John Doe' },
-    { id: 2, name: 'Jane Smith' }
+    { id: '1', name: 'John Doe' },
+    { id: '2', name: 'Jane Smith' }
 ];
 let nextId = 1;
 
@@ -14,10 +14,14 @@ router.get('/:id', (req, res) => {
     item ? res.json(item) : res.status(404).json({ error: 'Not found' });
 });
 
-router.post('/', (req, res) => {
-    const item = { id: nextId++, ...req.body };
-    people.push(item);
-    res.status(201).json(item);
+router.post('/', (req, res, next) => {
+    const newPerson = {
+        id: Date.now().toString(),
+        name: req.body.name
+    };
+
+    people.push(newPerson);
+    res.status(201).json(newPerson);
 });
 
 router.put('/:id', (req, res) => {
@@ -28,8 +32,7 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    people = people.filter(p => p.id != req.params.id);
-    res.json({ message: 'Deleted' });
+    people = people.filter(person => person.id !== req.params.id);
+    res.status(200).json({ message: 'Person deleted successfully' });
 });
-
 module.exports = router;

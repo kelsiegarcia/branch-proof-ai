@@ -10,6 +10,7 @@ import { Relationships } from './components/relationships/relationships';
 import { Records } from './components/records/records';
 import { ValidationReport } from './components/validation-report/validation-report';
 import { Navbar } from './components/navbar/navbar';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { Navbar } from './components/navbar/navbar';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

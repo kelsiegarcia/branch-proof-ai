@@ -13,4 +13,13 @@ export class PeopleService {
   getPeople(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+
+  addPerson(person: any) {
+    return this.http.post(this.apiUrl, person);
+  }
+
+  deletePerson(id: string) {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
 }
