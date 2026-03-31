@@ -22,4 +22,8 @@ export class PeopleService {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
+  updatePerson(id: string, person: any) {
+    return this.http.put(`${this.apiUrl}/${id}`, person);
+  }
+
 }

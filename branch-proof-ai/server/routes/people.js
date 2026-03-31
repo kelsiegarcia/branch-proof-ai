@@ -27,7 +27,11 @@ router.post('/', (req, res, next) => {
 router.put('/:id', (req, res) => {
     const i = people.findIndex(p => p.id == req.params.id);
     if (i === -1) return res.status(404).json({ error: 'Not found' });
-    people[i] = { ...people[i], ...req.body };
+
+    people[i] = {
+        id: req.params.id,
+        name: req.body.name
+    };
     res.json(people[i]);
 });
 

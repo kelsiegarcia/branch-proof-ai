@@ -11,6 +11,9 @@ export class People implements OnInit {
   people: any[] = [];
   newPersonName: string = '';
 
+  editingPersonId: string | null = null;
+  editPersonName: string = '';
+
   constructor(
     private peopleService: PeopleService,
     private cdr: ChangeDetectorRef
@@ -63,6 +66,34 @@ export class People implements OnInit {
       },
       error: (error) => {
         console.error('Error deleting person:', error);
+      }
+    });
+  }
+
+  startEdit(person: any) {
+    this.editingPersonId = person.id;
+    this.editPersonName = person.name;
+  }
+
+  cancelEdit() {
+    this.editingPersonId = null;
+    this.editPersonName = '';
+  }
+
+  saveEdit(id: string) {
+    if (!this.editPersonName.trim()) return;
+
+    const updatedPerson = { name: this.editPersonName };
+
+    this.peopleService.updatePerson(id, updatedPerson).subscribe({
+      next: () => {
+        this.editingPersonId = null;
+        this.editPersonName = '';
+        this.loadPeople();
+        this.cdr.markForCheck();
+      },
+      error: (error) => {
+        console.error('Error updating person:', error);
       }
     });
   }
