@@ -2,27 +2,26 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class Records {
-  private apiUrl = 'http://localhost:3000/people'; // Replace with your backend API URL
+
+@Injectable({ providedIn: 'root' })
+export class RecordsService {
+  private apiUrl = 'http://localhost:3000/api/records';
 
   constructor(private http: HttpClient) { }
 
-  getPeople(): Observable<any[]> {
+  getRecords(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  addPerson(person: any) {
-    return this.http.post<any>(this.apiUrl, person);
+  addRecord(record: any): Observable<any[]> {
+    return this.http.post<any[]>(this.apiUrl, record);
   }
 
-  deletePerson(id: string) {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  deleteRecord(id: string): Observable<any[]> {
+    return this.http.delete<any[]>(`${this.apiUrl}/${id}`);
   }
 
-  // updatePerson(id: string, person: any) {
-  //   return this.http.put(`${this.apiUrl}/${id}`, person);
-  // }
+  updateRecord(id: string, record: any): Observable<any[]> {
+    return this.http.put<any[]>(`${this.apiUrl}/${id}`, record);
+  }
 }

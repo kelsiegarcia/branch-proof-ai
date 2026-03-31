@@ -1,2 +1,22 @@
 <h2>Relationships</h2>
-<p>Manage relationships here.</p>
+
+<input [(ngModel)]="newRelationshipName" name="newRelationshipName" placeholder="Enter relationship name" />
+<button type="button" (click)="addRelationship()">Add Relationship</button>
+
+<p>Total relationships: {{ relationships.length }}</p>
+
+<ul>
+  <li *ngFor="let relationship of relationships">
+    <span *ngIf="editingRelationshipId !== relationship.id">
+      {{ relationship.name }}
+      <button type="button" (click)="startEdit(relationship)">Edit</button>
+      <button type="button" (click)="deleteRelationship(relationship.id)">Delete</button>
+    </span>
+
+    <span *ngIf="editingRelationshipId === relationship.id">
+      <input [(ngModel)]="editRelationshipName" name="editRelationshipName" />
+      <button type="button" (click)="saveEdit(relationship.id)">Save</button>
+      <button type="button" (click)="cancelEdit()">Cancel</button>
+    </span>
+  </li>
+</ul>

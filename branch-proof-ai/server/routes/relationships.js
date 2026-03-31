@@ -1,7 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-let relationships = [];
+let relationships = [
+    {
+        id: '123',
+        person1: 'John Doe',
+        person2: 'Jane Smith',
+        type: 'parent'
+    }
+];
 let nextId = 1;
 
 router.get('/', (req, res) => res.json(relationships));
@@ -12,9 +19,13 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const item = { id: nextId++, ...req.body };
-    relationships.push(item);
-    res.status(201).json(item);
+    const newRelationship = {
+        id: Date.now().toString(),
+        name: req.body.name
+    };
+
+    relationships.push(newRelationship);
+    res.status(201).json(newRelationship);
 });
 
 router.put('/:id', (req, res) => {

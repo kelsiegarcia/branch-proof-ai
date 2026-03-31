@@ -1,2 +1,26 @@
 <h2>Records</h2>
-<p>Manage records here.</p>
+
+<input [(ngModel)]="newRecordTitle" name="newRecordTitle" placeholder="Title" />
+<input [(ngModel)]="newRecordDescription" name="newRecordDescription" placeholder="Description" />
+<input [(ngModel)]="newRecordPerson" name="newRecordPerson" placeholder="Person" />
+<button type="button" (click)="addRecord()">Add Record</button>
+
+<p>Total records: {{ records.length }}</p>
+
+<ul>
+  <li *ngFor="let record of records">
+    <span *ngIf="editingRecordId !== record.id">
+      {{ record.title }} -- {{ record.description }} -- {{ record.person }}
+      <button type="button" (click)="startEdit(record)">Edit</button>
+      <button type="button" (click)="deleteRecord(record.id)">Delete</button>
+    </span>
+
+    <span *ngIf="editingRecordId === record.id">
+      <input [(ngModel)]="editRecordTitle" name="editRecordTitle" />
+      <input [(ngModel)]="editRecordDescription" name="editRecordDescription" />
+      <input [(ngModel)]="editRecordPerson" name="editRecordPerson" />
+      <button type="button" (click)="saveEdit(record.id)">Save</button>
+      <button type="button" (click)="cancelEdit()">Cancel</button>
+    </span>
+  </li>
+</ul>
