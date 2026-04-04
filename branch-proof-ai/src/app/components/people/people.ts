@@ -70,8 +70,8 @@ export class People implements OnInit {
 		});
 	}
 
-	startEdit(person: any) {
-		this.editingPersonId = person.id;
+	startEdit(person: any): void {
+		this.editingPersonId = person._id;
 		this.editPersonName = person.name;
 	}
 

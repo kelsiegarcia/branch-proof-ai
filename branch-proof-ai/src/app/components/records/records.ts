@@ -81,8 +81,8 @@ export class Records implements OnInit {
     });
   }
 
-  startEdit(record: any) {
-    this.editingRecordId = record.id;
+  startEdit(record: any): void {
+    this.editingRecordId = record._id;
     this.editRecordTitle = record.title;
     this.editRecordDescription = record.description;
     this.editRecordPerson = record.person;

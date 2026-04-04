@@ -9,17 +9,17 @@
 
 <ul>
   <li *ngFor="let record of records">
-    <span *ngIf="editingRecordId !== record.id">
+    <span *ngIf="editingRecordId !== record._id">
       {{ record.title }} -- {{ record.description }} -- {{ record.person }}
       <button type="button" (click)="startEdit(record)">Edit</button>
-      <button type="button" (click)="deleteRecord(record.id)">Delete</button>
+      <button type="button" (click)="deleteRecord(record._id)">Delete</button>
     </span>
 
-    <span *ngIf="editingRecordId === record.id">
+    <span *ngIf="editingRecordId === record._id">
       <input [(ngModel)]="editRecordTitle" name="editRecordTitle" />
       <input [(ngModel)]="editRecordDescription" name="editRecordDescription" />
       <input [(ngModel)]="editRecordPerson" name="editRecordPerson" />
-      <button type="button" (click)="saveEdit(record.id)">Save</button>
+      <button type="button" (click)="saveEdit(record._id)">Save</button>
       <button type="button" (click)="cancelEdit()">Cancel</button>
     </span>
   </li>

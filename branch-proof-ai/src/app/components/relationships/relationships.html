@@ -7,15 +7,15 @@
 
 <ul>
   <li *ngFor="let relationship of relationships">
-    <span *ngIf="editingRelationshipId !== relationship.id">
+    <span *ngIf="editingRelationshipId !== relationship._id">
       {{ relationship.name }}
       <button type="button" (click)="startEdit(relationship)">Edit</button>
-      <button type="button" (click)="deleteRelationship(relationship.id)">Delete</button>
+      <button type="button" (click)="deleteRelationship(relationship._id)">Delete</button>
     </span>
 
-    <span *ngIf="editingRelationshipId === relationship.id">
+    <span *ngIf="editingRelationshipId === relationship._id">
       <input [(ngModel)]="editRelationshipName" name="editRelationshipName" />
-      <button type="button" (click)="saveEdit(relationship.id)">Save</button>
+      <button type="button" (click)="saveEdit(relationship._id)">Save</button>
       <button type="button" (click)="cancelEdit()">Cancel</button>
     </span>
   </li>

@@ -7,15 +7,15 @@
 
 <ul>
   <li *ngFor="let person of people">
-    <span *ngIf="editingPersonId !== person.id">
+    <span *ngIf="editingPersonId !== person._id">
       {{ person.name }}
       <button type="button" (click)="startEdit(person)">Edit</button>
-      <button type="button" (click)="deletePerson(person.id)">Delete</button>
+      <button type="button" (click)="deletePerson(person._id)">Delete</button>
     </span>
 
-    <span *ngIf="editingPersonId === person.id">
+    <span *ngIf="editingPersonId === person._id">
       <input [(ngModel)]="editPersonName" name="editPersonName" />
-      <button type="button" (click)="saveEdit(person.id)">Save</button>
+      <button type="button" (click)="saveEdit(person._id)">Save</button>
       <button type="button" (click)="cancelEdit()">Cancel</button>
     </span>
   </li>

@@ -71,7 +71,7 @@ export class Relationships implements OnInit {
   }
 
   startEdit(relationship: any): void {
-    this.editingRelationshipId = relationship.id;
+    this.editingRelationshipId = relationship._id;
     this.editRelationshipName = relationship.name;
   }
 
