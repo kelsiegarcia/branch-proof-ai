@@ -1,1 +1,92 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #F4F9F6;
+  color: #333;
+}
+
+.page-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+input {
+  padding: 10px;
+  margin: 0 10px 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 14px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #6BAF92;
+  color: white;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #4E8F76;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 12px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.form-row {
+  margin-bottom: 16px;
+}
+
+.page-title {
+  margin-bottom: 20px;
+}

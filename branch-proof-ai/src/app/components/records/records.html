@@ -1,26 +1,36 @@
-<h2>Records</h2>
+<h2 class="page-title">Records</h2>
 
-<input [(ngModel)]="newRecordTitle" name="newRecordTitle" placeholder="Title" />
-<input [(ngModel)]="newRecordDescription" name="newRecordDescription" placeholder="Description" />
-<input [(ngModel)]="newRecordPerson" name="newRecordPerson" placeholder="Person" />
-<button type="button" (click)="addRecord()">Add Record</button>
+<div class="card form-row">
+  <input [(ngModel)]="newRecordTitle" name="newRecordTitle" placeholder="Title" />
+  <input [(ngModel)]="newRecordDescription" name="newRecordDescription" placeholder="Description" />
+  <input [(ngModel)]="newRecordPerson" name="newRecordPerson" placeholder="Person" />
+  <button type="button" (click)="addRecord()">Add Record</button>
+</div>
 
 <p>Total records: {{ records.length }}</p>
 
 <ul>
   <li *ngFor="let record of records">
-    <span *ngIf="editingRecordId !== record._id">
-      {{ record.title }} -- {{ record.description }} -- {{ record.person }}
-      <button type="button" (click)="startEdit(record)">Edit</button>
-      <button type="button" (click)="deleteRecord(record._id)">Delete</button>
-    </span>
+    <div class="card">
+      <span *ngIf="editingRecordId !== record._id" class="item-row">
+        <span class="item-info">
+          <strong>{{ record.title }}</strong><br />
+          {{ record.description }}<br />
+          {{ record.person }}
+        </span>
+        <span>
+          <button type="button" (click)="startEdit(record)">Edit</button>
+          <button type="button" (click)="deleteRecord(record._id)">Delete</button>
+        </span>
+      </span>
 
-    <span *ngIf="editingRecordId === record._id">
-      <input [(ngModel)]="editRecordTitle" name="editRecordTitle" />
-      <input [(ngModel)]="editRecordDescription" name="editRecordDescription" />
-      <input [(ngModel)]="editRecordPerson" name="editRecordPerson" />
-      <button type="button" (click)="saveEdit(record._id)">Save</button>
-      <button type="button" (click)="cancelEdit()">Cancel</button>
-    </span>
+      <span *ngIf="editingRecordId === record._id">
+        <input [(ngModel)]="editRecordTitle" name="editRecordTitle" />
+        <input [(ngModel)]="editRecordDescription" name="editRecordDescription" />
+        <input [(ngModel)]="editRecordPerson" name="editRecordPerson" />
+        <button type="button" (click)="saveEdit(record._id)">Save</button>
+        <button type="button" (click)="cancelEdit()">Cancel</button>
+      </span>
+    </div>
   </li>
 </ul>

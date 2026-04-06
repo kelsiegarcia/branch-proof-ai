@@ -1,19 +1,21 @@
-<h2>Validation Report</h2>
+<h2 class="page-title">Validation Report</h2>
 
-<p>Total people: {{ peopleCount }}</p>
-<p>Total relationships: {{ relationshipsCount }}</p>
-<p>Total records: {{ recordsCount }}</p>
+<div class="card">
+  <p>Total people: {{ peopleCount }}</p>
+  <p>Total relationships: {{ relationshipsCount }}</p>
+  <p>Total records: {{ recordsCount }}</p>
 
-<h3>Evidence Strength: {{ evidenceStrength }}</h3>
+  <h3>Evidence Strength: {{ evidenceStrength }}</h3>
 
-<div *ngIf="evidenceStrength === 'Strong'">
-  <p>This genealogy group has strong supporting evidence.</p>
-</div>
+  <p *ngIf="evidenceStrength === 'Strong'">
+    This genealogy group has strong supporting evidence.
+  </p>
 
-<div *ngIf="evidenceStrength === 'Moderate'">
-  <p>This genealogy group has some supporting evidence, but could use more records.</p>
-</div>
+  <p *ngIf="evidenceStrength === 'Moderate'">
+    This genealogy group has some supporting evidence, but could use more records.
+  </p>
 
-<div *ngIf="evidenceStrength === 'Weak'">
-  <p>This genealogy group has very limited supporting evidence so far.</p>
+  <p *ngIf="evidenceStrength === 'Weak'">
+    This genealogy group has very limited supporting evidence so far.
+  </p>
 </div>

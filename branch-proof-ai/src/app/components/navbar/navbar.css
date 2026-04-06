@@ -1,0 +1,48 @@
+nav {
+  background-color: #6BAF92;
+  border-bottom: 1px solid #4E8F76;
+  padding: 0 20px;
+}
+
+nav a {
+  display: inline-block;
+  padding: 16px 18px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+nav a:hover {
+  background-color: #5b9f84;
+}
+
+nav a.active-link {
+  background-color: #4E8F76;
+  font-weight: 700;
+}
+
+/* Buttons */
+
+button {
+  padding: 10px 14px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #6BAF92;
+  color: white;
+}
+
+button:hover {
+  background-color: #4E8F76;
+}
+
+/* Cards */
+.card {
+  background: white;
+  border: 1px solid #d8e6df;
+  border-left: 4px solid #6BAF92;
+  border-radius: 6px;
+  padding: 16px;
+}

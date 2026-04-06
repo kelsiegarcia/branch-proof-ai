@@ -1,7 +1,7 @@
 <nav>
-  <a routerLink="/">Home</a> |
-  <a routerLink="/people">People</a> |
-  <a routerLink="/relationships">Relationships</a> |
-  <a routerLink="/records">Records</a> |
-  <a routerLink="/validation-report">Validation Report</a>
+  <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+  <a routerLink="/people" routerLinkActive="active-link">People</a>
+  <a routerLink="/relationships" routerLinkActive="active-link">Relationships</a>
+  <a routerLink="/records" routerLinkActive="active-link">Records</a>
+  <a routerLink="/validation-report" routerLinkActive="active-link">Validation Report</a>
 </nav>

@@ -1,22 +1,28 @@
-<h2>People</h2>
+<h2 class="page-title">People</h2>
 
-<input [(ngModel)]="newPersonName" name="newPersonName" placeholder="Enter name" />
-<button type="button" (click)="addPerson()">Add Person</button>
+<div class="card form-row">
+  <input [(ngModel)]="newPersonName" name="newPersonName" placeholder="Enter name" />
+  <button type="button" (click)="addPerson()">Add Person</button>
+</div>
 
 <p>Total people: {{ people.length }}</p>
 
 <ul>
   <li *ngFor="let person of people">
-    <span *ngIf="editingPersonId !== person._id">
-      {{ person.name }}
-      <button type="button" (click)="startEdit(person)">Edit</button>
-      <button type="button" (click)="deletePerson(person._id)">Delete</button>
-    </span>
+    <div class="card">
+      <span *ngIf="editingPersonId !== person._id" class="item-row">
+        <span class="item-info">{{ person.name }}</span>
+        <span>
+          <button type="button" (click)="startEdit(person)">Edit</button>
+          <button type="button" (click)="deletePerson(person._id)">Delete</button>
+        </span>
+      </span>
 
-    <span *ngIf="editingPersonId === person._id">
-      <input [(ngModel)]="editPersonName" name="editPersonName" />
-      <button type="button" (click)="saveEdit(person._id)">Save</button>
-      <button type="button" (click)="cancelEdit()">Cancel</button>
-    </span>
+      <span *ngIf="editingPersonId === person._id">
+        <input [(ngModel)]="editPersonName" name="editPersonName" />
+        <button type="button" (click)="saveEdit(person._id)">Save</button>
+        <button type="button" (click)="cancelEdit()">Cancel</button>
+      </span>
+    </div>
   </li>
 </ul>

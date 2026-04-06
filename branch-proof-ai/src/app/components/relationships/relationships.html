@@ -1,22 +1,28 @@
-<h2>Relationships</h2>
+<h2 class="page-title">Relationships</h2>
 
-<input [(ngModel)]="newRelationshipName" name="newRelationshipName" placeholder="Enter relationship name" />
-<button type="button" (click)="addRelationship()">Add Relationship</button>
+<div class="card form-row">
+  <input [(ngModel)]="newRelationshipName" name="newRelationshipName" placeholder="Enter relationship name" />
+  <button type="button" (click)="addRelationship()">Add Relationship</button>
+</div>
 
 <p>Total relationships: {{ relationships.length }}</p>
 
 <ul>
   <li *ngFor="let relationship of relationships">
-    <span *ngIf="editingRelationshipId !== relationship._id">
-      {{ relationship.name }}
-      <button type="button" (click)="startEdit(relationship)">Edit</button>
-      <button type="button" (click)="deleteRelationship(relationship._id)">Delete</button>
-    </span>
+    <div class="card">
+      <span *ngIf="editingRelationshipId !== relationship._id" class="item-row">
+        <span class="item-info">{{ relationship.name }}</span>
+        <span>
+          <button type="button" (click)="startEdit(relationship)">Edit</button>
+          <button type="button" (click)="deleteRelationship(relationship._id)">Delete</button>
+        </span>
+      </span>
 
-    <span *ngIf="editingRelationshipId === relationship._id">
-      <input [(ngModel)]="editRelationshipName" name="editRelationshipName" />
-      <button type="button" (click)="saveEdit(relationship._id)">Save</button>
-      <button type="button" (click)="cancelEdit()">Cancel</button>
-    </span>
+      <span *ngIf="editingRelationshipId === relationship._id">
+        <input [(ngModel)]="editRelationshipName" name="editRelationshipName" />
+        <button type="button" (click)="saveEdit(relationship._id)">Save</button>
+        <button type="button" (click)="cancelEdit()">Cancel</button>
+      </span>
+    </div>
   </li>
 </ul>
