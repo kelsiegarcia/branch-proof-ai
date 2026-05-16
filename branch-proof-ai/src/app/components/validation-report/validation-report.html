@@ -1,21 +1,27 @@
-<h2 class="page-title">Validation Report</h2>
+<div class="validation-container">
+  <h2>BranchProofAI Validation</h2>
 
-<div class="card">
-  <p>Total people: {{ peopleCount }}</p>
-  <p>Total relationships: {{ relationshipsCount }}</p>
-  <p>Total records: {{ recordsCount }}</p>
+  <input [(ngModel)]="personOne" placeholder="Person One" />
 
-  <h3>Evidence Strength: {{ evidenceStrength }}</h3>
+  <input [(ngModel)]="personTwo" placeholder="Person Two" />
 
-  <p *ngIf="evidenceStrength === 'Strong'">
-    This genealogy group has strong supporting evidence.
-  </p>
+  <input [(ngModel)]="relationship" placeholder="Claimed Relationship" />
 
-  <p *ngIf="evidenceStrength === 'Moderate'">
-    This genealogy group has some supporting evidence, but could use more records.
-  </p>
+  <textarea
+    [(ngModel)]="evidence"
+    placeholder="Evidence or supporting records"
+  ></textarea>
 
-  <p *ngIf="evidenceStrength === 'Weak'">
-    This genealogy group has very limited supporting evidence so far.
-  </p>
+  <button (click)="submitValidation()">
+    Generate Validation Report
+  </button>
+
+  <div *ngIf="loading">
+    Generating report...
+  </div>
+
+  <div *ngIf="analysis">
+    <h3>Validation Report</h3>
+    <p>{{ analysis }}</p>
+  </div>
 </div>
