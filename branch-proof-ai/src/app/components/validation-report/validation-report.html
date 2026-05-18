@@ -12,8 +12,8 @@
     {{ loadingAnalysis ? 'Generating Analysis...' : 'Generate AI Analysis' }}
   </button>
 
-  <div *ngIf="aiAnalysis">
+  <div *ngIf="aiAnalysis" class="analysis-card">
     <h3>AI Validation Analysis</h3>
-    <p>{{ aiAnalysis }}</p>
+    <p class="analysis-text">{{ aiAnalysis }}</p>
   </div>
 </div>
