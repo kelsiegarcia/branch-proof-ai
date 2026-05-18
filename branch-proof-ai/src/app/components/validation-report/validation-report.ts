@@ -38,7 +38,7 @@ export class ValidationReport implements OnInit {
         this.peopleCount = people.length;
         this.updateEvidenceStrength();
         this.cdr.markForCheck();
-        this.generateAiAnalysis();
+        // this.generateAiAnalysis();
       },
       error: (error: any) => {
         console.error('Error loading people:', error);

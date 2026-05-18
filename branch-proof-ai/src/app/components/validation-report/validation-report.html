@@ -1,27 +1,19 @@
-<div class="validation-container">
-  <h2>BranchProofAI Validation</h2>
+ <div class="validation-container">
+  <h2>BranchProofAI Validation Report</h2>
 
-  <input [(ngModel)]="personOne" placeholder="Person One" />
-
-  <input [(ngModel)]="personTwo" placeholder="Person Two" />
-
-  <input [(ngModel)]="relationship" placeholder="Claimed Relationship" />
-
-  <textarea
-    [(ngModel)]="evidence"
-    placeholder="Evidence or supporting records"
-  ></textarea>
-
-  <button (click)="submitValidation()">
-    Generate Validation Report
-  </button>
-
-  <div *ngIf="loading">
-    Generating report...
+  <div>
+    <p><strong>People:</strong> {{ peopleCount }}</p>
+    <p><strong>Relationships:</strong> {{ relationshipsCount }}</p>
+    <p><strong>Records:</strong> {{ recordsCount }}</p>
+    <p><strong>Evidence Strength:</strong> {{ evidenceStrength }}</p>
   </div>
 
-  <div *ngIf="analysis">
-    <h3>Validation Report</h3>
-    <p>{{ analysis }}</p>
+  <button (click)="generateAiAnalysis()" [disabled]="loadingAnalysis">
+    {{ loadingAnalysis ? 'Generating Analysis...' : 'Generate AI Analysis' }}
+  </button>
+
+  <div *ngIf="aiAnalysis">
+    <h3>AI Validation Analysis</h3>
+    <p>{{ aiAnalysis }}</p>
   </div>
 </div>
