@@ -6,6 +6,46 @@ const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+/**
+ * @swagger
+ * /api/validation/analyze:
+ *   post:
+ *     summary: Generate a genealogy validation analysis
+ *     description: Analyzes a claimed relationship using provided people, relationship type, and evidence notes.
+ *     tags:
+ *       - Validation
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - personOne
+ *               - personTwo
+ *               - relationship
+ *             properties:
+ *               personOne:
+ *                 type: string
+ *                 example: John Smith
+ *               personTwo:
+ *                 type: string
+ *                 example: Mary Smith
+ *               relationship:
+ *                 type: string
+ *                 example: Parent-Child
+ *               evidence:
+ *                 type: string
+ *                 example: Birth certificate and census records
+ *     responses:
+ *       200:
+ *         description: Validation analysis generated successfully
+ *       400:
+ *         description: Missing required fields
+ *       500:
+ *         description: Server error
+ */
+
 router.post('/analyze', async (req, res) => {
   try {
     const { personOne, personTwo, relationship, evidence } = req.body;
