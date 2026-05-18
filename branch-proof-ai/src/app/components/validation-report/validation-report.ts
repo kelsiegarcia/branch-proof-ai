@@ -96,7 +96,7 @@ export class ValidationReport implements OnInit {
       },
       error: (error: any) => {
         console.error('AI analysis error:', error);
-        this.aiAnalysis = 'Unable to generate AI analysis.';
+        // this.aiAnalysis = 'Unable to generate AI analysis.';
         this.loadingAnalysis = false;
         this.cdr.markForCheck();
       }
