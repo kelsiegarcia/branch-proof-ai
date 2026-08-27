@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const OpenAI = require('openai');
 
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const client = process.env.OPENAI_API_KEY
+  ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+  : null;
 
 /**
  * @swagger
@@ -54,6 +54,10 @@ router.post('/analyze', async (req, res) => {
       return res.status(400).json({
         error: 'personOne, personTwo, and relationship are required.',
       });
+    }
+
+    if (!client) {
+      throw new Error('OPENAI_API_KEY is not configured');
     }
 
     const prompt = `

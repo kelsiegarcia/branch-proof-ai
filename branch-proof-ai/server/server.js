@@ -2,13 +2,25 @@ const express = require('express');
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
+const mongoose = require('mongoose');
 
 
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+const allowedOrigins = (process.env.CLIENT_ORIGINS || 'http://localhost:4200')
+  .split(',')
+  .map((origin) => origin.trim());
+
+app.use(cors({
+  origin(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('Origin is not allowed by CORS'));
+  },
+}));
+app.use(express.json({ limit: '100kb' }));
 
 const swaggerOptions = {
   definition: {
@@ -28,8 +40,6 @@ const swaggerOptions = {
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
 // Routes
 app.use('/api/people', require('./routes/people'));
 app.use('/api/relationships', require('./routes/relationships'));
@@ -39,13 +49,13 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 // Health check
-app.get('/', (req, res) => res.json({ status: 'TreeProof API running' }));
+app.get('/', (req, res) => res.json({ status: 'BranchProofAI API running' }));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-const mongoose = require('mongoose');
+const mongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/branch-proof-ai';
 
-mongoose.connect('mongodb://127.0.0.1:27017/branch-proof-ai')
+mongoose.connect(mongoUri)
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));

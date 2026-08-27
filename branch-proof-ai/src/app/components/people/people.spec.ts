@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { of } from 'rxjs';
 
 import { People } from './people';
+import { PeopleService } from '../../services/people';
 
 describe('People', () => {
   let component: People;
@@ -8,7 +11,9 @@ describe('People', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [People]
+      declarations: [People],
+      imports: [FormsModule],
+      providers: [{ provide: PeopleService, useValue: { getPeople: () => of([]) } }]
     })
     .compileComponents();
 

@@ -1,0 +1,125 @@
+.hero {
+  padding: 4.5rem 3.5rem;
+  color: #f8fffb;
+  background:
+    radial-gradient(circle at top right, rgba(205, 235, 220, 0.3), transparent 34%),
+    linear-gradient(135deg, #173f35 0%, #276653 58%, #3f806b 100%);
+  border-radius: 20px;
+  box-shadow: 0 18px 50px rgba(27, 72, 59, 0.18);
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: #bfe4d2;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 780px;
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.hero-copy {
+  max-width: 680px;
+  margin: 1.5rem 0 0;
+  color: #e0f2e9;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+.hero-actions a {
+  display: inline-block;
+  padding: 0.85rem 1.15rem;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.primary-action {
+  color: #173f35;
+  background: #f8fffb;
+}
+
+.secondary-action {
+  color: #f8fffb;
+  border: 1px solid rgba(248, 255, 251, 0.6);
+}
+
+.workflow {
+  padding: 4rem 0 2rem;
+}
+
+.section-heading .eyebrow {
+  color: #3f806b;
+}
+
+.section-heading h2 {
+  max-width: 650px;
+  margin-bottom: 2rem;
+  color: #173f35;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.feature-card {
+  min-height: 175px;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #d7e5de;
+  border-radius: 12px;
+}
+
+.step-number {
+  color: #4e8f76;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.feature-card h3 {
+  margin: 1.5rem 0 0.5rem;
+  color: #173f35;
+}
+
+.feature-card p {
+  margin: 0;
+  color: #52645d;
+  line-height: 1.6;
+}
+
+.responsibility-note {
+  margin: 1rem 0 3rem;
+  padding: 1.25rem 1.5rem;
+  color: #324d43;
+  background: #eaf5ef;
+  border-left: 4px solid #4e8f76;
+  border-radius: 8px;
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding: 3rem 1.5rem;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}

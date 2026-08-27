@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ValidationService {
-  private apiUrl = 'http://localhost:3000/api/validation/analyze';
+  private apiUrl = '/api/validation/analyze';
 
   constructor(private http: HttpClient) {}
 

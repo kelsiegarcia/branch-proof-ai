@@ -1,13 +1,14 @@
 import { TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
 
-import { Relationships } from './relationships';
+import { RelationshipsService } from './relationships';
 
-describe('Relationships', () => {
-  let service: Relationships;
+describe('RelationshipsService', () => {
+  let service: RelationshipsService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(Relationships);
+    TestBed.configureTestingModule({ providers: [provideHttpClient()] });
+    service = TestBed.inject(RelationshipsService);
   });
 
   it('should be created', () => {

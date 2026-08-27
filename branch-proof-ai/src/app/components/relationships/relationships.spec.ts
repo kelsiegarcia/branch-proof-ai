@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { of } from 'rxjs';
 
 import { Relationships } from './relationships';
+import { RelationshipsService } from '../../services/relationships';
 
 describe('Relationships', () => {
   let component: Relationships;
@@ -8,7 +11,9 @@ describe('Relationships', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Relationships]
+      declarations: [Relationships],
+      imports: [FormsModule],
+      providers: [{ provide: RelationshipsService, useValue: { getRelationships: () => of([]) } }]
     })
     .compileComponents();
 
