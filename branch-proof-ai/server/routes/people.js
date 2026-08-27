@@ -2,12 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Person = require('../models/person');
 
-let people = [
-	{ id: '1', name: 'John Doe' },
-	{ id: '2', name: 'Jane Smith' }
-];
-let nextId = 1;
-
 router.get('/', async (req, res) => {
 	const people = await Person.find();
 	res.json(people);

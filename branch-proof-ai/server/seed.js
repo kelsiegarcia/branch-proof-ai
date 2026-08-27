@@ -5,7 +5,9 @@ const Person = require('./models/person');
 const Relationship = require('./models/relationship');
 const Record = require('./models/record');
 
-mongoose.connect('mongodb://127.0.0.1:27017/branch-proof-ai')
+const mongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/branch-proof-ai';
+
+mongoose.connect(mongoUri)
   .then(async () => {
     console.log('Connected to MongoDB for seeding');
 

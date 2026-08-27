@@ -1,13 +1,14 @@
 import { TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
 
-import { Validation } from './validation';
+import { ValidationService } from './validation';
 
-describe('Validation', () => {
-  let service: Validation;
+describe('ValidationService', () => {
+  let service: ValidationService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(Validation);
+    TestBed.configureTestingModule({ providers: [provideHttpClient()] });
+    service = TestBed.inject(ValidationService);
   });
 
   it('should be created', () => {

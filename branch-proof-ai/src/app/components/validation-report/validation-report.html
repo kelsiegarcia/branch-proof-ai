@@ -1,19 +1,75 @@
- <div class="validation-container">
-  <h2>BranchProofAI Validation Report</h2>
+<div class="validation-container">
+  <h2>Branch Proof AI Validation Report</h2>
+  <p class="page-intro">Choose two people and the evidence you want the AI assistant to evaluate.</p>
 
-  <div>
-    <p><strong>People:</strong> {{ peopleCount }}</p>
-    <p><strong>Relationships:</strong> {{ relationshipsCount }}</p>
-    <p><strong>Records:</strong> {{ recordsCount }}</p>
-    <p><strong>Evidence Strength:</strong> {{ evidenceStrength }}</p>
+  <div class="summary-grid">
+    <div class="summary-item"><span>People</span><strong>{{ peopleCount }}</strong></div>
+    <div class="summary-item"><span>Relationships</span><strong>{{ relationshipsCount }}</strong></div>
+    <div class="summary-item"><span>Records</span><strong>{{ recordsCount }}</strong></div>
+    <div class="summary-item"><span>Evidence</span><strong>{{ evidenceStrength }}</strong></div>
   </div>
 
-  <button (click)="generateAiAnalysis()" [disabled]="loadingAnalysis">
-    {{ loadingAnalysis ? 'Generating Analysis...' : 'Generate AI Analysis' }}
-  </button>
+  <section class="validation-card">
+    <h3>Relationship claim</h3>
+
+    <p *ngIf="peopleCount < 2" class="setup-notice">
+      Add at least two people before generating a relationship analysis.
+    </p>
+
+    <div class="form-grid">
+      <label>
+        Person one
+        <select [(ngModel)]="selectedPersonOne">
+          <option value="">Select a person</option>
+          <option *ngFor="let person of people" [value]="person.name">{{ person.name }}</option>
+        </select>
+      </label>
+
+      <label>
+        Person two
+        <select [(ngModel)]="selectedPersonTwo">
+          <option value="">Select a person</option>
+          <option *ngFor="let person of people" [value]="person.name">{{ person.name }}</option>
+        </select>
+      </label>
+    </div>
+
+    <label>
+      Claimed relationship
+      <select [(ngModel)]="selectedRelationship">
+        <option value="">Select a relationship</option>
+        <option *ngFor="let relationship of relationships" [value]="relationship.name">
+          {{ relationship.name }}
+        </option>
+      </select>
+    </label>
+
+    <label>
+      Supporting evidence
+      <textarea
+        [(ngModel)]="evidenceNotes"
+        rows="7"
+        placeholder="Add dates, places, record titles, citations, and other supporting details."
+      ></textarea>
+    </label>
+
+    <p *ngIf="selectedPersonOne && selectedPersonOne === selectedPersonTwo" class="setup-notice">
+      Choose two different people for the relationship claim.
+    </p>
+
+    <button
+      (click)="generateAiAnalysis()"
+      [disabled]="loadingAnalysis || !canGenerateAnalysis"
+    >
+      {{ loadingAnalysis ? 'Generating Analysis...' : 'Generate AI Analysis' }}
+    </button>
+  </section>
 
   <div *ngIf="aiAnalysis" class="analysis-card">
     <h3>AI Validation Analysis</h3>
-    <p class="analysis-text">{{ aiAnalysis }}</p>
+    <p *ngIf="isFallbackAnalysis" class="fallback-notice">
+      Demo fallback: The AI service was unavailable, so this is a sample analysis rather than a live AI result.
+    </p>
+    <div class="analysis-text">{{ aiAnalysis }}</div>
   </div>
 </div>

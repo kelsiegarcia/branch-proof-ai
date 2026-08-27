@@ -1,7 +1,42 @@
 .validation-container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 2rem auto;
   padding: 1.5rem;
+}
+
+.page-intro {
+  margin-top: -0.75rem;
+  color: #5a6b64;
+  line-height: 1.6;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem;
+  background: #eaf5ef;
+  border-radius: 10px;
+}
+
+.summary-item span {
+  color: #587066;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.summary-item strong {
+  color: #173f35;
+  font-size: 1.35rem;
 }
 
 .validation-card,
@@ -13,11 +48,69 @@
   margin-bottom: 1rem;
 }
 
+.validation-card h3,
+.analysis-card h3 {
+  margin-top: 0;
+  color: #173f35;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+  color: #324d43;
+  font-weight: 700;
+}
+
+select,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem;
+  color: #26332f;
+  background: #fff;
+  border: 1px solid #bdcec6;
+  border-radius: 7px;
+  font: inherit;
+  font-weight: 400;
+}
+
+textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+select:focus,
+textarea:focus {
+  border-color: #4e8f76;
+  outline: 3px solid rgba(78, 143, 118, 0.18);
+}
+
+.setup-notice {
+  padding: 0.75rem 1rem;
+  color: #704a00;
+  background: #fff6dc;
+  border-radius: 8px;
+}
+
 button {
   padding: 0.75rem 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  color: #fff;
+  background: #276653;
+}
+
+button:hover:not(:disabled) {
+  background: #173f35;
 }
 
 button:disabled {
@@ -28,4 +121,27 @@ button:disabled {
 .analysis-text {
   white-space: pre-line;
   line-height: 1.6;
+}
+
+.fallback-notice {
+  padding: 0.75rem 1rem;
+  color: #704a00;
+  background: #fff6dc;
+  border: 1px solid #e7c66c;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .summary-grid,
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .summary-grid,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
 }

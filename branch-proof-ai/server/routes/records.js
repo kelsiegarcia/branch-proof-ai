@@ -2,16 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Record = require('../models/record');
 
-let records = [
-	{
-		id: '123',
-		title: 'Birth Certificate',
-		description: 'John Doe birth record',
-		person: 'John Doe'
-	}
-];
-let nextId = 1;
-
 router.get('/', async (req, res) => {
 	const records = await Record.find();
 	res.json(records);

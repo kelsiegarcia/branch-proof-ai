@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
 
 import { Navbar } from './navbar';
 
@@ -8,7 +9,8 @@ describe('Navbar', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Navbar]
+      declarations: [Navbar],
+      imports: [RouterModule.forRoot([])]
     })
     .compileComponents();
 

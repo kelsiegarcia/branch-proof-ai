@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class RelationshipsService {
-  private apiUrl = 'http://localhost:3000/api/relationships';
+  private apiUrl = '/api/relationships';
 
   constructor(private http: HttpClient) { }
 
